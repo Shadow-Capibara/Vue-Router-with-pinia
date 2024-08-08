@@ -5,6 +5,7 @@
   import { ref, onMounted, computed, watchEffect } from 'vue'
   import EventService from '@/services/EventService'
 import { error } from 'console'
+import nProgress from 'nprogress'
 
   const events = ref<Event[] | null>(null)
   const totalEvents = ref(0)
@@ -31,6 +32,7 @@ import { error } from 'console'
   onMounted(() => {
     watchEffect(() =>{
       events.value = null
+      nProgress.start()
       EventService.getEvents(pageSize.value,page.value)
         .then((response) =>{
           events.value = response.data
@@ -38,6 +40,9 @@ import { error } from 'console'
         })
         .catch((error) =>{
           console.error('There was an error!' , error)
+        })
+        .finally(()=>{
+          nProgress.done()
         })
     })
   })
