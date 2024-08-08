@@ -65,6 +65,7 @@ import { error } from 'console'
     v-if="hasNextPage"
     >Next Page &#62;
     </RouterLink>
+    
   </div>
   </div>
   
@@ -92,4 +93,7 @@ import { error } from 'console'
 #page-next{
   text-align: right;
 }
+
+
 </style>
+

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
-import {useMessageStore} from '@stores/message'
+import { useMessageStore } from '@/stores/message'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
