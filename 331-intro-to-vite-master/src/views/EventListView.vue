@@ -25,13 +25,13 @@ import { error } from 'console'
   const pageSize = computed(() => props.pageSize)
 
   const hasNextPage = computed(() =>{
-    const totalPages = Math.ceil(totalEvents.value/2)
+    const totalPages = Math.ceil(totalEvents.value/3)
     return page.value < totalPages
   })
 
   onMounted(() => {
     watchEffect(() =>{
-      EventService.getEvents(pageSize.value,page.value)
+      EventService.getEvents(3,page.value)
         .then((response) =>{
           events.value = response.data
           totalEvents.value = response.headers['x-total-count']
