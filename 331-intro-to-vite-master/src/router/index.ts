@@ -8,6 +8,7 @@ import EventLayoutView from '@/views/event/LayoutView.vue'
 import StudentView from '@/views/StudentView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import NetworkErrorView from '@/views/NetworkErrorView.vue'
+import nProgress from 'nprogress'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -74,6 +75,13 @@ const router = createRouter({
       component: NetworkErrorView
     },
   ]
+})
+router.beforeEach(() =>{
+  nProgress.done()
+})
+
+router.afterEach(()=>{
+  nProgress.done()
 })
 
 export default router
